@@ -1,0 +1,14 @@
+.LogInWrapper{
+    display: flex;
+    justify-content: center;
+}
+.LogInCard{
+   width: 27vw;
+   margin-top: 5%;
+}
+.logoInsta{
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
