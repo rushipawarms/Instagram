@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -12,7 +13,10 @@ import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
 import CloudUploadicon from '@material-ui/icons/CloudUpload'
 import { Link } from 'react-router-dom'
+import { context } from '../Context/AuthContext';
 export default function Login() {
+    const store=useContext(context);
+    console.log(store);
   const useStyle=makeStyles({
     text1:{
       marginBottom:"1rem",
