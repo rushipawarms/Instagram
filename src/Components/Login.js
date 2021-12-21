@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext } from 'react';
+import { useContext,useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -12,11 +12,18 @@ import { makeStyles } from '@material-ui/core';
 import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
 import CloudUploadicon from '@material-ui/icons/CloudUpload'
-import { Link } from 'react-router-dom'
+import { Link ,useNavigate} from 'react-router-dom'
 import { context } from '../Context/AuthContext';
+import { async } from '@firebase/util';
 export default function Login() {
-    const store=useContext(context);
-    console.log(store);
+    const [email,setemail]=useState('');
+  const [password,setpassword]=useState('');
+  const [fullname , setfullname]=useState('');
+  const[file,setfile]=useState(null);
+  const[error,seterror]=useState('');
+  const [loading,setloading]=useState(false);
+  const navigate = useNavigate();
+    const {login}=useContext(context);
   const useStyle=makeStyles({
     text1:{
       marginBottom:"1rem",
@@ -35,6 +42,21 @@ export default function Login() {
     }
   })
   const classes=useStyle();
+  let loginHandle=async()=>{
+      try{
+        setloading(true);
+        let res=await login(email,password);
+        setloading(false);
+        navigate('/Feed');
+      }
+      catch(err){
+        seterror(err);
+        setTimeout(() => {
+          seterror('');
+        }, 3000);
+        setloading(false);
+      }
+  }
   return (
       <div className="LogInWrapper">
           <div className='LogInCard'>
@@ -45,15 +67,15 @@ export default function Login() {
                 <CardContent>
                   
                  
-                   {true && <Alert severity="error"  margin="dense">This is an error alert — check it out!</Alert>}
-                   <TextField id="outlined-basic" label="Email" variant="outlined" margin="dense" size='small'  fullWidth={true}/>
-                   <TextField id="outlined-basic" label="Password" variant="outlined" margin="dense" size='small'  fullWidth={true} />
+                   {error!=='' && <Alert severity="error"  margin="dense">{error}</Alert>}
+                   <TextField id="outlined-basic" label="Email" variant="outlined" margin="dense" size='small'  fullWidth={true}value={email} onChange={(e)=>setemail(e.target.value)} />
+                   <TextField id="outlined-basic" label="Password" variant="outlined" margin="dense" size='small'  fullWidth={true} value={password} onChange={(e)=>setpassword(e.target.value)}  />
                    <Typography color="primary" className={classes.text2} variant="Subtitle1"  >
                        Forget Password?
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button color="primary" fullWidth={true} variant="contained" margin="dense" > Log In</Button>
+                  <Button color="primary" fullWidth={true} variant="contained" margin="dense" disabled={loading} onClick={loginHandle}  > Log In</Button>
                 </CardActions>
                 
             </Card>

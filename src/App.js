@@ -5,6 +5,7 @@ import {BrowserRouter as Router,Routes,Route,BrowserRouter} from 'react-router-d
 import Login from './Components/Login';
 import FirstPage from './Components/FirstPage';
 import {AuthProvider} from './Context/AuthContext'
+import Feed from './Components/Feed';
 
 function App() {
   return (
@@ -12,12 +13,12 @@ function App() {
       <BrowserRouter>
       <AuthProvider>
       <Routes>
-          <Route exact path="/"  element={<FirstPage/>}/>
+        <Route exact path="/"  element={<FirstPage/>}/>
         <Route exact path="/SignUp"  element={<SignUp/>}/>
         <Route path="/Login" element={<Login/>}/>
+        <Route path="/Feed" element={<Feed/>}/>
       </Routes>
       </AuthProvider>
-      
       </BrowserRouter>
      
     </div>
