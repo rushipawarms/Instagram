@@ -4,17 +4,26 @@ export const context=React.createContext();
 
 export function AuthProvider({children}){
 
+   const[error1,seterror]=useState("");
     const [user,setuser]=useState('');
     const [loading,setloading]=useState(true);
     
     function signup(email,password){
-        return auth.createUserWithEmailAndPassword(email,password);
+        return auth.createUserWithEmailAndPassword(email,password)
+       
+        .catch((e)=>{
+            seterror(e);
+            console.log(e);
+        })
     }
     function login(email,password){
         return auth.signInWithEmailAndPassword(email,password);
     }
     function logout(){
         return auth.signOut();
+    }
+    function forgetPassword(email){
+        return auth.sendPasswordResetEmail(email);
     }
 
     useEffect(()=>{
@@ -29,11 +38,12 @@ export function AuthProvider({children}){
         signup,
         login,
         logout,
-        user
+        user,
+        forgetPassword,error1
     }
     return(
         <context.Provider value={store}>
-            {!loading && children}
+            { children}
         </context.Provider>
     )
 }

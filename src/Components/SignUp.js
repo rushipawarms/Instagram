@@ -37,15 +37,26 @@ export default function SignUp() {
   const [loading,setloading]=useState(false);
   const navigate = useNavigate();
   const {signup}=useContext(context);
-
+  const {error1}=useContext(context);
+ console.log(error1);
   let signupHandle=async()=>{
-    if(file==null)
+    if(file==null )
     {
       seterror('please select profile picture');
       setTimeout(() => {
         seterror('');
       }, 3000);
+      return;
     }
+   if(error1)
+   {
+     seterror('Email or password badly formatted');
+     setTimeout(() => {
+      seterror('');
+    }, 3000);
+    console.log(error);
+    return;
+   }
     try {
       setloading(true);
       let userobj= await signup(email,password)

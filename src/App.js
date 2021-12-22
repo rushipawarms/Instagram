@@ -8,6 +8,7 @@ import FirstPage from './Components/FirstPage';
 import {AuthProvider} from './Context/AuthContext'
 import Feed from './Components/Feed';
 import PrivateRoute from './Components/PrivateRoute';
+import Forget from './Components/Forget';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route  path='/Feed' element={<PrivateRoute/>}>
         <Route  path='/Feed' element={<Feed/>}/>
         </Route>
+        <Route path="/Forget" element={<Forget/>}/>
       </Routes>
       </AuthProvider>
       </React.Fragment>

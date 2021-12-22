@@ -12,3 +12,10 @@
     align-items: center;
     justify-content: center;
 }
+.logoLock{
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+
+}
