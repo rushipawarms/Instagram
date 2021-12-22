@@ -1,25 +1,33 @@
 
 import './App.css';
+import React from 'react';
 import SignUp from './Components/SignUp';
 import {BrowserRouter as Router,Routes,Route,BrowserRouter} from 'react-router-dom';
 import Login from './Components/Login';
 import FirstPage from './Components/FirstPage';
 import {AuthProvider} from './Context/AuthContext'
 import Feed from './Components/Feed';
+import PrivateRoute from './Components/PrivateRoute';
 
 function App() {
   return (
     <div >
-      <BrowserRouter>
+      <Router>
+      <React.Fragment>
       <AuthProvider>
       <Routes>
-        <Route exact path="/"  element={<FirstPage/>}/>
-        <Route exact path="/SignUp"  element={<SignUp/>}/>
+     
+        <Route  path="/"  element={<FirstPage/>}/>
+        <Route  path="/SignUp"  element={<SignUp/>}/>
         <Route path="/Login" element={<Login/>}/>
-        <Route path="/Feed" element={<Feed/>}/>
+        {/* <PrivateRoute  path="/Feed" element={<Feed/>}/> */}
+        <Route  path='/Feed' element={<PrivateRoute/>}>
+        <Route  path='/Feed' element={<Feed/>}/>
+        </Route>
       </Routes>
       </AuthProvider>
-      </BrowserRouter>
+      </React.Fragment>
+      </Router>
      
     </div>
   );

@@ -6,6 +6,7 @@ function Feed() {
     const {logout}=useContext(context);
     let handleLogOut=async()=>{
             await logout();
+            console.log("logout");
     }
     return (
        
