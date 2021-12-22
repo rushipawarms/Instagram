@@ -50,7 +50,7 @@ export default function Login() {
         navigate('/Feed');
       }
       catch(err){
-        seterror(err);
+        seterror(err.message);
         setTimeout(() => {
           seterror('');
         }, 3000);

@@ -37,8 +37,7 @@ export default function SignUp() {
   const [loading,setloading]=useState(false);
   const navigate = useNavigate();
   const {signup}=useContext(context);
-  const {error1}=useContext(context);
- console.log(error1);
+  
   let signupHandle=async()=>{
     if(file==null )
     {
@@ -48,16 +47,9 @@ export default function SignUp() {
       }, 3000);
       return;
     }
-   if(error1)
-   {
-     seterror('Email or password badly formatted');
-     setTimeout(() => {
-      seterror('');
-    }, 3000);
-    console.log(error);
-    return;
-   }
+ 
     try {
+      seterror('');
       setloading(true);
       let userobj= await signup(email,password)
       let uid= userobj.user.uid
@@ -71,7 +63,7 @@ export default function SignUp() {
            console.log(progress);
        }
        function f2(erro){
-        seterror(erro);
+        seterror(erro.message);
         setTimeout(() => {
           seterror('');
         }, 3000);
@@ -93,10 +85,11 @@ export default function SignUp() {
        }
 
     } catch (err) {
-      seterror(err);
+      seterror(err.message);
       setTimeout(() => {
         seterror('');
       }, 3000);
+      setloading(false);
     }
   }
   return (

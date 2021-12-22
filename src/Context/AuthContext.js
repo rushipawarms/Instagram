@@ -4,17 +4,14 @@ export const context=React.createContext();
 
 export function AuthProvider({children}){
 
-   const[error1,seterror]=useState("");
+   
     const [user,setuser]=useState('');
     const [loading,setloading]=useState(true);
     
     function signup(email,password){
         return auth.createUserWithEmailAndPassword(email,password)
        
-        .catch((e)=>{
-            seterror(e);
-            console.log(e);
-        })
+        
     }
     function login(email,password){
         return auth.signInWithEmailAndPassword(email,password);
@@ -39,7 +36,7 @@ export function AuthProvider({children}){
         login,
         logout,
         user,
-        forgetPassword,error1
+        forgetPassword
     }
     return(
         <context.Provider value={store}>

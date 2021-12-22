@@ -61,7 +61,7 @@ export default function Forget() {
         navigate('/Login');
       }
       catch(err){
-        seterror(err);
+        seterror(err.message);
         setTimeout(() => {
           seterror('');
         }, 3000);
