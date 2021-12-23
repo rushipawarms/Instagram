@@ -48,17 +48,7 @@ export default function Forget() {
   let HandleLink=async()=>{
       try{
         setloading(true);
-       forgetPassword(email).then((obj)=>{
-        setloading(false);
-        navigate('/Login');
-       }).catch((err)=>{
-        seterror(err);
-        setTimeout(() => {
-          seterror('');
-        }, 3000);
-       })
-        setloading(false);
-        navigate('/Login');
+      await forgetPassword(email)
       }
       catch(err){
         seterror(err.message);

@@ -17,3 +17,15 @@
     margin-left: 7.5rem;
    
 }
+
+
+@media screen and (max-width: 768px) {
+
+    .LogInCard{
+        width: 90vw;
+    }
+    .logometa{
+        margin-left: 6.5rem;
+       
+    }
+  }

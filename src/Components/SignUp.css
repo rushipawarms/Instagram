@@ -7,8 +7,28 @@
    margin-top: 5%;
 }
 .logoInsta{
-    height: 5rem;
+    height: 10rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
+
+@media screen and (max-width: 768px) {
+
+    .SignUpWrapper{
+        display: flex;
+        justify-content: center;
+    }
+    .SignUpCard{
+       width: 75vw;
+       margin-top: 5%;
+    }
+    .logoInsta{
+        height: 2rem;
+        size: 10rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+  }

@@ -7,7 +7,7 @@
    margin-top: 5%;
 }
 .logoInsta{
-    height: 5rem;
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,3 +19,13 @@
     margin-top: 5%;
 
 }
+
+@media screen and (min-width: 768px) {
+
+    
+    .LogInCard{
+       width: 75vw;
+      
+    }
+   
+  }
