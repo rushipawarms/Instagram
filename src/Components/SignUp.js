@@ -72,12 +72,13 @@ export default function SignUp() {
        function f3(){
            uploadTask.snapshot.ref.getDownloadURL().then((url)=>{
                console.log(url);
-               database.users.doc('uid').set({
+               database.users.doc(uid).set({
                  email:email,
                  userId:uid,
                  name:fullname,
                  profileurl:url,
-                 createdAt:database.getTimeStamp()
+                 createdAt:database.getTimeStamp(),
+                 postIds:[]
                })
            })
            setloading(false);

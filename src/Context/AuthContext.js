@@ -38,6 +38,7 @@ export function AuthProvider({children}){
         user,
         forgetPassword
     }
+    
     return(
         <context.Provider value={store}>
             { children}
