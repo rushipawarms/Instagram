@@ -1,6 +1,7 @@
 import React,{useContext,useState,useEffect}from 'react'
 import { context } from '../Context/AuthContext'
 import { database } from '../firebase';
+import Post from './Posts';
 import UploadFile from './UploadFile';
 
 
@@ -10,9 +11,11 @@ function Feed() {
     useEffect(()=>{
         const unsub=database.users.doc(user.uid).onSnapshot((snap)=>{
             setData(snap.data());
-            console.log(userData);
+            
         })
+        return ()=>{unsub()}
     },[user])
+    
     return (
        
         <div style={{display:"flex" , justifyContent:"center", alignItems:"center", flexDirection:"column"}}>
@@ -23,6 +26,7 @@ function Feed() {
                     </button>
             </div>
             <UploadFile user={userData}/>
+            <Post userData={userData} style={{topMargin:"3rem"}}/>
         </div>
     )
 }

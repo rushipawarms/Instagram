@@ -77,9 +77,9 @@ function UploadFile(props) {
         <div>{
             error!=''? <Alert severity="error">{error}</Alert>:
             <>
-                <input type="file" id="upload-input" accept='video/*' style={{display:"none"}} onChange={(e)=>{handlepost(e.target.files[0])}}/>
+                <input type="file" disabled={loading} id="upload-input" accept='video/*' style={{display:"none"}} onChange={(e)=>{handlepost(e.target.files[0])}}/>
                 <label htmlFor='upload-input'>
-                    <Button variant="outlined" color="secondary" component="span" >
+                    <Button variant="outlined" disabled={loading} color="secondary" component="span" >
                 <MovieIcon/>&nbsp;Upload Video
                     </Button>
                 </label>

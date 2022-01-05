@@ -1,0 +1,36 @@
+ .video-cont{
+     display: flex;
+     flex-direction: column;
+     height: 70vh;
+     align-items: center;
+     border-radius: 5px;
+     overflow: scroll;
+     scroll-snap-type: y mandatory;
+     scrollbar-width: none;
+     margin-top: 0.5rem;
+     
+ }
+ .video-cont::-webkit-scrollbar{
+     display: none;
+ }
+ .video-ele{
+   position: relative;
+}
+.fa{
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+}
+.icon-style{
+    position: absolute;
+    bottom: 7%;
+    right: 5%;
+}
+.like{
+    cursor: pointer;
+color: red;
+}
+.unlike{
+    cursor: pointer;
+    color: white;
+}
