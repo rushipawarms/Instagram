@@ -7,7 +7,7 @@ export default function Like({userData,postData}) {
     const [like,setlike]=useState(null);
    const [call, setcall]=useState(null);
     useEffect(()=>{
-        console.log(userData.userId);
+        
          let check= postData.Likes.includes(userData.userId)?true:false
         setlike(check);
     },[postData,call])
