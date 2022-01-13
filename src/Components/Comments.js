@@ -13,7 +13,7 @@ function Comments({postData}) {
         }
         setcomments(arr);
     },[postData])
-   
+ 
     return (
        <div>
             {

@@ -107,7 +107,7 @@ export default function SignUp() {
                  
                    {error!=='' && <Alert severity="error"  margin="dense">{error}</Alert>}
                    <TextField id="outlined-basic" label="Email" variant="outlined" margin="dense" size='small'  fullWidth={true} value={email} onChange={(e)=>setemail(e.target.value)}/>
-                   <TextField id="outlined-basic" label="Password" variant="outlined" margin="dense" size='small'  fullWidth={true} value={password} onChange={(e)=>setpassword(e.target.value)} />
+                   <TextField id="outlined-basic" type="password" label="Password" variant="outlined" margin="dense" size='small'  fullWidth={true} value={password} onChange={(e)=>setpassword(e.target.value)} />
                    <TextField id="outlined-basic" label="Fullname" variant="outlined" margin="dense" size='small'  fullWidth={true} value={fullname} onChange={(e)=>setfullname(e.target.value)}/>
                    <Button color="secondary" fullWidth={true} variant="outlined" margin="dense" size="small" startIcon={<CloudUploadicon/>} component="label">
                 Upload Profile

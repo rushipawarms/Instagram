@@ -29,9 +29,9 @@ export default function Post({userData}) {
    
     const handleClickOpen = (id) => {setOpen(id); };
     const handleClose = () => {setOpen(null);};
-    useEffect(()=>{
+    useEffect(async()=>{
         let parr=[]
-        let unsub=database.posts.orderBy("createdAT",'desc').onSnapshot((Qsnap)=>{
+        let unsub= await database.posts.orderBy("createdAT",'desc').onSnapshot((Qsnap)=>{
            Qsnap.forEach((doc)=>{
                let data={...doc.data(),postId:doc.id}
                parr.push(data);
