@@ -11,7 +11,7 @@ function Video(props) {
     let handleend=(e)=>{
         
         let next=ReactDOM.findDOMNode(e.target).parentNode.nextSibling;
-        console.log(next);
+       
         if(next)
         {
             next.scrollIntoView();
@@ -20,7 +20,7 @@ function Video(props) {
     }
     return (
         
-            <video src={props.src} onEnded={handleend} className='video-style' muted='muted'   onClick={handleClick}/>
+            <video src={props.src} className='video-style' muted='muted'   onClick={handleClick}/>
         
     )
 }

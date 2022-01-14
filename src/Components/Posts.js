@@ -42,6 +42,31 @@ export default function Post({userData}) {
             unsub();
        }, 1000);
     },[post])
+
+    let callback=(entries)=>{
+        entries.forEach((entry)=>{
+            let el=entry.target.childNodes[0]
+            el.play().then(()=>{
+                if(!el.paused && !entry.isIntersecting)
+                {
+                    el.pause();
+                }
+            })
+        })
+
+    }
+
+    let observer = new IntersectionObserver(callback, {threshold: 0.9});
+
+    useEffect(()=>{
+        let ele=document.querySelectorAll('.video-ele')
+        ele.forEach((element)=>{
+            observer.observe(element)
+        })
+        return ()=>{
+            observer.disconnect();
+        }
+    },[post])
    
     return (
         <div>
@@ -64,7 +89,7 @@ export default function Post({userData}) {
                                 onClose={handleClose}
                                 aria-labelledby="alert-dialog-title"
                                 aria-describedby="alert-dialog-description"
-                                fullWidth="true"
+                                fullWidth="1"
                                 maxWidth="md"
                             >
                                 <div className='modal-cont'>

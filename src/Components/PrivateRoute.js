@@ -18,7 +18,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 const PrivateRoute = ({component:Component,...rest}) => {
     const {user}=useContext(context);
-    console.log(user);
+   
     // If authorized, return an outlet that will render child elements
     // If not, return element that will navigate to login page
     return user? <Outlet /> : <Navigate to="/Login" />;

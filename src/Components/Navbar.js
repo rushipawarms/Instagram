@@ -23,6 +23,7 @@ import { makeStyles } from '@material-ui/core'
 import insta from './images/logo.png'
 import HomeIcon from '@mui/icons-material/Home';
 import Avatar from '@mui/material/Avatar';
+import CircularProgress from '@mui/material/CircularProgress'
 const useStyle=makeStyles({
     appb:{
         background:'white'
@@ -122,6 +123,8 @@ export default function Navbar({userData}) {
   );
 
   return (
+    
+      
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" sx={{background:"white"}}className={classes.appb}>
         <Toolbar>
@@ -141,7 +144,7 @@ export default function Navbar({userData}) {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-                <Avatar src={userData.profileurl} sx={{ width: 40, height: 40 }} />
+                <Avatar  sx={{ width: 40, height: 40 }} />
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } , color:"black" , marginRight:"4rem"}}>
@@ -161,5 +164,6 @@ export default function Navbar({userData}) {
       {renderMobileMenu}
       {renderMenu}
     </Box>
-  );
+    
+    );
 }
